@@ -1,5 +1,5 @@
-import { HttpStatusCode, HttpStatusMessage } from "../utils/enum.js";
-import BaseError from "./BaseError.js";
+import { HttpStatusCode } from '../utils/enum.js';
+import BaseError from './BaseError.js';
 
 export class APIError extends BaseError {
   constructor(description) {

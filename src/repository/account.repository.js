@@ -1,8 +1,12 @@
-import { prisma } from "../database/prisma.js";
-import generateNumericId from "../provider/crypto.js";
+import { prisma } from '../database/prisma.js';
+import generateNumericId from '../provider/crypto.js';
 
 class AccountRepository {
-  static create = (user_id, interest_rate, type) => {
+  static create = (
+    user_id,
+    interest_rate,
+    type,
+  ) => {
     const account = prisma.account.create({
       data: {
         user: {
@@ -22,7 +26,11 @@ class AccountRepository {
       select: {
         id: true,
         user: {
-          select: { id: true, email: true, is_verified: true },
+          select: {
+            id: true,
+            email: true,
+            is_verified: true,
+          },
         },
         number: true,
         balance: true,
@@ -68,7 +76,10 @@ class AccountRepository {
 
   static findByUserId = (user_id, type) => {
     const account = prisma.account.findFirst({
-      where: { user: { id: user_id }, type: { id: type } },
+      where: {
+        user: { id: user_id },
+        type: { id: type },
+      },
       select: {
         id: true,
         user: {
@@ -147,7 +158,11 @@ class AccountRepository {
     return accounts;
   };
 
-  static updateBalance = (account_id, number, balance) => {
+  static updateBalance = (
+    account_id,
+    number,
+    balance,
+  ) => {
     const account = prisma.account.update({
       where: { id: account_id, number: number },
       data: { balance: balance },

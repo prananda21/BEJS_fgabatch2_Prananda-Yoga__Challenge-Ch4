@@ -1,7 +1,12 @@
-import { prisma } from "../database/prisma.js";
+import { prisma } from '../database/prisma.js';
 
 class TxRepository {
-  static create = (account_id, amount, description, type) => {
+  static create = (
+    account_id,
+    amount,
+    description,
+    type,
+  ) => {
     const tx = prisma.transaction.create({
       data: {
         account: {
@@ -105,7 +110,7 @@ class TxRepository {
       },
     });
 
-    return tx
+    return tx;
   };
 }
 

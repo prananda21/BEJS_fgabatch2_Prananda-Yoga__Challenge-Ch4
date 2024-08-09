@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from 'joi';
 
 export const idTxValidation = Joi.object({
   tx_id: Joi.string().required(),
